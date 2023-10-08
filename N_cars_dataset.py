@@ -136,6 +136,7 @@ def read2Dspikes(filename):
 	>>> TD = spikeFileIO.read2Dspikes(file_path)
 	'''
 	tEvent,xEvent,yEvent,pEvent = np.loadtxt(filename, dtype=int, unpack=True)	
+	###* tEvent,xEvent,yEvent,pEvent = np.loadtxt(filename, dtype=int, unpack=False)	
 	return event(xEvent, yEvent, pEvent, tEvent/1000)	# convert spike times to ms
 
 
@@ -176,8 +177,10 @@ class IBMGestureDataset(Dataset):
         self.shift_x = shift_x
         self.shift_y = shift_y
         self.att_window = att_window
-        samples_car = np.loadtxt(sampleFile_car, dtype=str, delimiter='\n', usecols=[0])
-        samples_background = np.loadtxt(sampleFile_background, dtype=str, delimiter='\n', usecols=[0])
+		### samples_car = np.loadtxt(sampleFile_car, dtype=str, delimiter='\n', usecols=[0])
+        samples_car = np.loadtxt(sampleFile_car, dtype=str, usecols=[0]) 
+		### samples_background = np.loadtxt(sampleFile_background, dtype=str, delimiter='\n', usecols=[0])
+        samples_background = np.loadtxt(sampleFile_background, dtype=str, usecols=[0]) 
         
         # prepare the list of the entire dataset and annoted the classes
         sample=np.concatenate((samples_car,samples_background),axis=None)        
@@ -199,7 +202,8 @@ class IBMGestureDataset(Dataset):
 
         # Read input spike from input files (read only the part selected by sampleLength)
         inputSpikes = read2Dspikes(
-                        self.path + str(inputIndex.item()) + '.dat'
+                        ### self.path + str(inputIndex.item()) + '.dat'
+						self.path + str(inputIndex.item())
                         ).toSpikeTensor(torch.zeros((2,self.att_window[0],self.att_window[1],self.nTimeBins)),
                         samplingTime=self.samplingTime, shift_x=self.shift_x, shift_y= self.shift_y)
         # Create one-hot encoded desired matrix
