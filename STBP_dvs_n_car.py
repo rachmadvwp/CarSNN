@@ -103,9 +103,11 @@ for epoch in range(num_epochs):
            optimizer.zero_grad()
            images = images.float().to(device)
            first=0
+           ### print(snn) ### debug
 	   # group outputs of the same image of length sampleLength and accumulate the prediction for every samplingTime
            for j in range (0, int(sampleLength/samplingTime)):
               outputs = snn(images[:,:,:,:,j])
+              ### print(snn) ### debug
               if first==0:
                  _,accumulation=outputs.to(device).max(1)
                  first=first+1

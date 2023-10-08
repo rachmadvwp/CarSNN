@@ -44,7 +44,7 @@ def mem_update(ops, x, mem, spike):
     """
     #print(ops(x).size())
     #print(spike.size())
-    mem = mem * decay * (1. - spike) + ops(x)
+    mem = mem * decay * (1. - spike) + ops(x) 
     spike = act_fun(mem) # act_fun : approximation firing function
     return mem, spike
 

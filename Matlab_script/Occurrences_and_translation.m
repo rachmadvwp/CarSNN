@@ -5,20 +5,19 @@
 % b)to visualize the occurences of events in the xy coordinate space      %
 %-------------------------------------------------------------------------%
 
-write_output_files_test=0; %set to 1 if you would write the new dataset 
+write_output_files_test=1; %set to 1 if you would write the new dataset 
                            %files into the format used in python script 
                             
 
-write_output_files_train=0; %set to 1 if you would write the new dataset 
+write_output_files_train=1; %set to 1 if you would write the new dataset 
                             %files into the format used in python script
 
 % variables to store the occurences of events                           
 occurences_train=zeros(304,304);
 occurences_test=zeros(304,304);
 
-%% test part
+%% test part ----------------
 
- 
 if write_output_files_test==1
     % create new directories to store the files
     mkdir ../ N_cars
@@ -37,11 +36,10 @@ end
 for i=0:4395
     filename_from=sprintf('../n-cars_test/test/cars/obj_%06d_td.dat',i);
     if write_output_files_test==1
-        
         filename_to=sprintf('../N_cars/test/cars/obj_%06d_td.dat',i);
-        
         to= fopen(filename_to,'w');
-        fprintf(list_of_cars_files,filename_to);
+        %%% fprintf(list_of_cars_files,filename_to);
+        fprintf(list_of_cars_files,sprintf('N_cars/test/cars/obj_%06d_td.dat',i));
         fprintf(list_of_cars_files,'\n');
     end
     data=load_atis_data(filename_from);
@@ -69,7 +67,8 @@ for i=0:4210
     if write_output_files_test==1
         filename_to=sprintf('../N_cars/test/background/obj_%06d_td.dat',i);
         to= fopen(filename_to,'w');
-        fprintf(list_of_background_files,filename_to);
+        %%% fprintf(list_of_background_files,filename_to);
+        fprintf(list_of_background_files,sprintf('N_cars/test/background/obj_%06d_td.dat',i));
         fprintf(list_of_background_files,'\n');
     end
     data=load_atis_data(filename_from);
@@ -90,13 +89,12 @@ end
 if write_output_files_test==1
     fclose(list_of_background_files);
 end
-%% train part
 
+%% train part ----------------
 
 % create new directories to store the files
 if write_output_files_train==1
     mkdir ../ N_cars
-
     mkdir ../N_cars train
     mkdir ../N_cars/train cars
     mkdir ../N_cars/train background
@@ -114,7 +112,8 @@ for i=4396:12335
     if write_output_files_train==1
         filename_to=sprintf('../N_cars/train/cars/obj_%06d_td.dat',i);
         to= fopen(filename_to,'w');
-        fprintf(list_of_cars_files,filename_to);
+        %%% fprintf(list_of_cars_files,filename_to);
+        fprintf(list_of_cars_files,sprintf('N_cars/train/cars/obj_%06d_td.dat',i));
         fprintf(list_of_cars_files,'\n');
     end
     data=load_atis_data(filename_from);
@@ -124,7 +123,7 @@ for i=4396:12335
         if write_output_files_train==1
             % write the output file in format: 
             % timestamp x-coordinate y-coordinate polarity
-            %%%%%%%%%%%%%%%%%%%%%%%%fprintf(to, '%d %d %d %d\n',data.ts(j),data.x(j),data.y(j),data.p(j));
+            fprintf(to, '%d %d %d %d\n',data.ts(j),data.x(j),data.y(j),data.p(j));
         end
     end
     if write_output_files_train==1
@@ -142,7 +141,8 @@ for i=4211:11692
     if write_output_files_train==1
         filename_to=sprintf('../N_cars/train/background/obj_%06d_td.dat',i);
         to= fopen(filename_to,'w');
-        fprintf(list_of_background_files,filename_to);
+        %%% fprintf(list_of_background_files,filename_to);
+        fprintf(list_of_background_files,sprintf('N_cars/train/background/obj_%06d_td.dat',i));
         fprintf(list_of_background_files,'\n');
     end
     data=load_atis_data(filename_from);
