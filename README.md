@@ -1,4 +1,4 @@
-# CarSNN (modified by rachmadvwp)
+# CarSNN (modified)
 Implementation of CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Chip
 
 If you used these results in your research, please refer to the paper
