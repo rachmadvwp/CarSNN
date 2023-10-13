@@ -43,6 +43,11 @@ These files have 4 column with the following format:
 
 If you desire you can write your own dataset and give your images with the above format without change nothing
 
+Ensure to fulfill the library requirements:
+```
+pip install numpy torch torchvision
+```
+
 ### Network format
 
 The networks are descripted into .txt files in the net directory. You can find all the used network with and without ceil mode for the pooling layers. You can set this mode by modify the rows 250, 251 and 276 of the file spiking_model_LIF.py . 
