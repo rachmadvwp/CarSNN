@@ -6,7 +6,7 @@ If you used these results in your research, please refer to the paper
 A. Viale, A. Marchisio, M. Martina, G. Masera and M. Shafique, "CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Research Processor," 2021 International Joint Conference on Neural Networks (IJCNN), Virtual Event, July 2021.
 ```
 ```
-@INPROCEEDINGS{Viale2021CarSNN,
+@INPROCEEDINGS{Marchisio2021DVSAttacks,
   author={A. {Viale} and A. {Marchisio} and M. {Martina} and G. {Masera} and M. {Shafique}},
   booktitle={2021 International Joint Conference on Neural Networks (IJCNN)}, 
   title={CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Research Processor}, 
