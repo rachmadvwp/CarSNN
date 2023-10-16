@@ -1,4 +1,4 @@
-# CarSNN
+# CarSNN (updated)
 Implementation of CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Chip
 
 If you used these results in your research, please refer to the paper
@@ -6,7 +6,7 @@ If you used these results in your research, please refer to the paper
 A. Viale, A. Marchisio, M. Martina, G. Masera and M. Shafique, "CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Research Processor," 2021 International Joint Conference on Neural Networks (IJCNN), Virtual Event, July 2021.
 ```
 ```
-@INPROCEEDINGS{Marchisio2021DVSAttacks,
+@INPROCEEDINGS{Viale2021CarSNN,
   author={A. {Viale} and A. {Marchisio} and M. {Martina} and G. {Masera} and M. {Shafique}},
   booktitle={2021 International Joint Conference on Neural Networks (IJCNN)}, 
   title={CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Research Processor}, 
@@ -42,6 +42,11 @@ These files have 4 column with the following format:
 "timestamp of event in usec" "x coordinate" "y coordinate" "polarity of event (-1 or 1)"
 
 If you desire you can write your own dataset and give your images with the above format without change nothing
+
+Ensure to fulfill the library requirements:
+```
+pip install numpy torch torchvision
+```
 
 ### Network format
 
@@ -79,7 +84,7 @@ To change the epoch to run the train you have to change the parameter num_epoch 
 
 Example of command to run the code:
 ```
-CUDA_VISIBLE_DEVICES=0 python STBP_dvs_n_car.py --filenet ./net/net_1_4a32c3z2a32c3z2a_100_100.txt --fileresult res_prova_input_100_100_st_1_sl_10_bs_40_15tw_2_ch_trained.txt --batch_size 40 --channel 2 --lr 1e-3 --lr_decay_epoch 20 --lr_decay_value 0.5 --threshold 0.4 --att_window 100 100 0 0 --sample_length 10 --sample_time 1
+CUDA_VISIBLE_DEVICES=0 python3 STBP_dvs_n_car.py --filenet ./net/net_1_4a32c3z2a32c3z2a_100_100_no_ceil.txt --fileresult res_prova_input_100_100_st_1_sl_10_bs_40_15tw_2_ch_trained.txt --batch_size 40 --lr 1e-3 --lr_decay_epoch 20 --lr_decay_value 0.5 --threshold 0.4 --att_window 100 100 0 0 --sample_length 10 --sample_time 1
 ```
 
 Running this code, the weights of the networks are firstly initialized by the values at directories: "net_1_4a32c3z2a32c3z2a_50_50", "net_1_4a32c3z2a32c3z2a_50_50_no_ceil", "net_1_4a32c3z2a32c3z2a_100_100", "net_1_4a32c3z2a32c3z2a_100_100_no_ceil", "net_1_4a32c3z2a32c3z2a_128_128", "net_1_4a32c3z2a32c3z2a_128_128_no_ceil". These values are the results of pre-training of the networks, with neuron threshold equal to 0.4, for 50 epochs using the bias. After that the networks are trained without bias. If you are not interested to reduce the amount of memory used, you can maintain the bias and so change a bit the script "spiking_model_LIF.py". This lead to higher accuracy results.
