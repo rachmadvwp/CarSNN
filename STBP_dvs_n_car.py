@@ -83,6 +83,10 @@ snn.to(device)
 criterion = nn.MSELoss(reduction='mean')
 optimizer = torch.optim.Adam(snn.parameters(), lr=args.lr, weight_decay=args.weight_decay, amsgrad=False) #L2r
 
+### debug: begin -------
+print(str(snn))
+### debug: end ---------
+
 # run the train and test for num_epochs epochs
 for epoch in range(num_epochs):
     best_acc_entire_image_test=0
