@@ -1,7 +1,7 @@
 # CarSNN (updated)
 Implementation of CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Chip
 
-If you used these results in your research, please refer to the paper
+(Updated) If you used these results in your research, please refer to the paper
 ```
 A. Viale, A. Marchisio, M. Martina, G. Masera and M. Shafique, "CarSNN: An Efficient Spiking Neural Network for Event-Based Autonomous Cars on the Loihi Neuromorphic Research Processor," 2021 International Joint Conference on Neural Networks (IJCNN), Virtual Event, July 2021.
 ```
@@ -43,7 +43,7 @@ These files have 4 column with the following format:
 
 If you desire you can write your own dataset and give your images with the above format without change nothing
 
-Ensure to fulfill the library requirements:
+(Updated) Ensure to fulfill the library requirements:
 ```
 pip install numpy torch torchvision
 ```
@@ -82,7 +82,7 @@ To run the network we define some arguments to give at the command line:
 * --weight_decay : it is the weight regularization described for the Adam optimizer at the link https://arxiv.org/abs/1711.05101 . Default: 0 .
 To change the epoch to run the train you have to change the parameter num_epoch in spiking_model_LIF.py script at row 13
 
-Example of command to run the code:
+(Updated) Example of command to run the code:
 ```
 CUDA_VISIBLE_DEVICES=0 python3 STBP_dvs_n_car.py --filenet ./net/net_1_4a32c3z2a32c3z2a_100_100_no_ceil.txt --fileresult res_prova_input_100_100_st_1_sl_10_bs_40_15tw_2_ch_trained.txt --batch_size 40 --lr 1e-3 --lr_decay_epoch 20 --lr_decay_value 0.5 --threshold 0.4 --att_window 100 100 0 0 --sample_length 10 --sample_time 1
 ```
